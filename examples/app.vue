@@ -13,7 +13,7 @@ export default {
     }
   },
   beforeCreate() {
-    
+
   }
 }
 </script>

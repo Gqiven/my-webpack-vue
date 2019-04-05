@@ -1,8 +1,10 @@
 module.exports = {
   dev: {
-    env: require('./dev.env.js')
+    mode: 'development',
+    publicPath: '/'
   },
   build: {
-    env: require('./prod.env.js')
+    mode: 'production',
+    publicPath: './'
   }
 }

@@ -3,8 +3,26 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 //构建前清空构建目录
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const config = require('../config/index.js')
+let configData = null;//配置字段
+
+//确定mode
+let _mode;
+switch(process.env.NODE_ENV) {
+  case 'development':
+    _mode = 'development';
+    configData = config.dev;
+    break;
+  case 'production':
+    _mode = 'production';
+    configData = config.build;
+    break;
+  default:
+    _mode = 'none';
+}
 
 module.exports = {
+  mode: _mode,
   //入口文件
   entry: {
     index: './examples/index.js'
@@ -15,7 +33,7 @@ module.exports = {
     filename: '[name].js',
     //文件存放地址
     path: path.resolve(__dirname, '../dist'),
-    publicPath: '/'
+    publicPath: configData.publicPath
   },
   module: {
     rules: [
