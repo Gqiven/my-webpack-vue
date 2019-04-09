@@ -1,10 +1,11 @@
 module.exports = {
   dev: {
     mode: 'development',
-    publicPath: '/'
+    publicPath: '/',
+    port: 3000
   },
   build: {
     mode: 'production',
-    publicPath: './'
+    publicPath: './',
   }
 }

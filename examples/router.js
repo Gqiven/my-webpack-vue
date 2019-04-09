@@ -12,6 +12,13 @@ const router = new Router({
         require(['./app.vue'],resolve)
       }
     },
+    {
+      path: '/alert',
+      name: 'alert',
+      component: function(resolve) {
+        require(['./demo/alert.vue'],resolve)
+      }
+    },
   ]
 });
 export default router;

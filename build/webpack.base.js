@@ -35,12 +35,28 @@ module.exports = {
     path: path.resolve(__dirname, '../dist'),
     publicPath: configData.publicPath
   },
+  resolve: {
+    //自动解析确定的扩展
+    extensions: ['.js', '.vue'],
+    //指定解析模块使的搜索目录
+    modules: [path.resolve(__dirname, '../node_modules')]
+  },
+  stats:{
+    modules: false,
+    children: false,
+    chunks: false,
+    chunkModules: false
+  },
   module: {
     rules: [
       {
         test: /\.vue$/,
         use: ['vue-loader'],
-        exclude: /node_modules/
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.less$/,
+        use: ['vue-style-loader','css-loader','less-loader']
       }
     ]
   },
@@ -48,8 +64,17 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './examples/index.html',
       filename: 'index.html',
+      //favicon: 'https://static.mileslife.com/image/32X32.ico'
+      // minify: true
     }),
     new CleanWebpackPlugin(),
     new VueLoaderPlugin()
-  ]
+  ],
+  optimization: {
+    //分离第三方库
+    splitChunks: {
+      chunks: 'all',
+      name: 'vendor'
+    }
+  }
 }
