@@ -24,6 +24,10 @@ export default {
         {
           name: 'Alert',
           path: '/alert'
+        },
+        {
+          name: 'countDown',
+          path: '/countDown'
         }
       ]
     }

@@ -19,6 +19,13 @@ const router = new Router({
         require(['./demo/alert.vue'],resolve)
       }
     },
+    {
+      path: '/countdown',
+      name: 'countdown',
+      component: function(resolve) {
+        require(['./demo/countDown.vue'],resolve)
+      }
+    },
   ]
 });
 export default router;
